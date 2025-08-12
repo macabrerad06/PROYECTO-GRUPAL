@@ -93,7 +93,7 @@ class ClienteRepository implements RepositoryInterface
             $row['email'],
             $row['telefono'],
             $row['direccion'],
-            $row['tipoCliente']
+            $row['tipo_cliente']
         );
     }
 }

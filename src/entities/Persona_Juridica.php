@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace App\entities;
+
 class Persona_Juridica extends Cliente
 {
     private string $razonSocial;

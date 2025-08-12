@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace App\entities;
+
 class ProductoDigital extends Producto
 {
     private string $urlDescarga;

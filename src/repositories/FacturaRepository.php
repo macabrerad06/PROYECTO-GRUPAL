@@ -93,9 +93,11 @@ class FacturaRepository implements RepositoryInterface
     {
         return new Factura(
             (int)$row['id'],
-            (int)$row['idCliente'],
-            new \DateTime($row['fecha']),
-            (float)$row['total']
+            (int)$row['id_venta'],
+            (string)$row['numero'],
+            (string)$row['clave_acceso'],
+            new \DateTimeImmutable($row['fecha_emision']),
+            (string)$row['estado']
         );
     }
 }

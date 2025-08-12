@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+namespace App\entities;
+use \DateTimeImmutable;
+
 class Factura
 {
     private ?int $id;
@@ -12,11 +15,12 @@ class Factura
     private string $estado;
 
     public function __construct(
+        ?int $id,
         int $idVenta,
         string $numero,
-        string $estado,
         ?string $claveAcceso = null,
-        ?DateTimeImmutable $fechaEmision = null
+        ?DateTimeImmutable $fechaEmision = null,
+        string $estado
     ) {
         if (!in_array($estado, ['emitida', 'anulada', 'pendiente_sri'], true)) {
             throw new InvalidArgumentException("Estado de factura inválido: {$estado}.");

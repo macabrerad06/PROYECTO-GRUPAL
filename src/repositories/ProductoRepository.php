@@ -53,10 +53,10 @@ class ProductoRepository implements RepositoryInterface
             (int)$data['id'],
             $data['nombre'],
             $data['descripcion'],
-            (float)$data['precioUnitario'],
+            (float)$data['precio_unitario'],
             (int)$data['stock'],
-            (int)$data['idCategoria'],
-            $data['tipoProducto']
+            (int)$data['id_categoria'],
+            $data['tipo_producto']
         );
     }
 

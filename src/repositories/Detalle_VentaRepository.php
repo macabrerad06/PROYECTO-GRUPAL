@@ -92,11 +92,11 @@ class DetalleVentaRepository implements RepositoryInterface
     private function hydrate(array $row): DetalleVenta
     {
         return new DetalleVenta(
-            (int)$row['idVenta'],
-            (int)$row['lineNumber'],
-            (int)$row['idProducto'],
+            (int)$row['id_venta'],
+            (int)$row['line_number'],
+            (int)$row['id_producto'],
             (int)$row['cantidad'],
-            (float)$row['precioUnitario'],
+            (float)$row['precio_unitario'],
             (float)$row['subtotal']
         );
     }

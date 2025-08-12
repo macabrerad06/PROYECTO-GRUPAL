@@ -2,18 +2,21 @@
 
 declare(strict_types=1);
 
+namespace App\entities;
+
 class Producto
 {
     private ?int $id;
-    private string $nombre;
+    private ?string $nombre;
     private ?string $descripcion; 
-    private float $precioUnitario; 
-    private int $stock;
-    private int $idCategoria;
-    private string $tipoProducto; 
+    private ?float $precioUnitario; 
+    private ?int $stock;
+    private ?int $idCategoria;
+    private ?string $tipoProducto; 
 
     public function __construct(
-        string $nombre,
+        ?int $id,
+        ?string $nombre,
         ?string $descripcion, 
         float $precioUnitario, 
         int $stock,

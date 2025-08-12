@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);   
 
+namespace App\entities;
+
 class Persona_Natural extends Cliente
 {
     private string $nombre;
