@@ -81,16 +81,12 @@ class ProductoRepository implements RepositoryInterface
         ]);
     }
 
-    public function delete(object $entity): bool
+    public function delete(int $id): bool
     {
-        if (!$entity instanceof Producto) {
-            throw new \InvalidArgumentException('Entity must be an instance of Producto');
-        }
-
         $sql = "DELETE FROM producto WHERE id=:id";
         $stmt = $this->connection->prepare($sql);
 
-        return $stmt->execute([':id' => $entity->getId()]);
+        return $stmt->execute([':id' => $id]);
     }
 
     public function findAll(): array
