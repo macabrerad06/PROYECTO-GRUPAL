@@ -12,6 +12,7 @@ class ProductoFisico extends Producto
     private ?float $profundidad;
 
     public function __construct(
+        ?int $id,
         string $nombre,
         ?string $descripcion,
         float $precioUnitario,
@@ -35,7 +36,7 @@ class ProductoFisico extends Producto
             throw new InvalidArgumentException("La profundidad no puede ser negativa.");
         }
 
-        parent::__construct($nombre, $descripcion, $precioUnitario, $stock, $idCategoria, 'FISICO');
+        parent::__construct($id,$nombre, $descripcion, $precioUnitario, $stock, $idCategoria, 'FISICO');
         $this->peso = $peso;
         $this->alto = $alto;
         $this->ancho = $ancho;

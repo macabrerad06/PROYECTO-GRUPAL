@@ -2,8 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\entities;
+namespace App\Entities;
 
+// Asume que ProductoDigital extiende de Producto y que Producto tiene un constructor
+// que acepta el ID como su primer argumento (?int $id = null)
 class ProductoDigital extends Producto
 {
     private string $urlDescarga;
@@ -16,9 +18,22 @@ class ProductoDigital extends Producto
         int $stock,
         int $idCategoria,
         string $urlDescarga,
-        string $licencia
+        string $licencia,
+        ?int $id = null // <-- ¡HE AÑADIDO ESTE PARÁMETRO! Ahora el ID es aceptado
     ) {
-        parent::__construct($nombre, $descripcion, $precioUnitario, $stock, $idCategoria, 'DIGITAL');
+        // Llama al constructor de la clase padre (Producto).
+        // Los argumentos que pasas aquí DEBEN COINCIDIR con la firma del constructor de Producto.
+        parent::__construct(
+            $id, // <-- Pasa el $id que recibiste en este constructor
+            $nombre,
+            $descripcion,
+            $precioUnitario,
+            $stock,
+            $idCategoria,
+            'DIGITAL' // El tipo_producto es fijo para ProductoDigital
+        );
+
+        // Asigna las propiedades específicas de ProductoDigital
         $this->urlDescarga = $urlDescarga;
         $this->licencia = $licencia;
     }

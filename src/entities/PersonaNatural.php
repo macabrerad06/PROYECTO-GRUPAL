@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);   
 
-namespace App\entities;
+namespace App\Entities;
 
-class Persona_Natural extends Cliente
+class PersonaNatural extends Cliente
 {
     private string $nombre;
     private string $apellido;

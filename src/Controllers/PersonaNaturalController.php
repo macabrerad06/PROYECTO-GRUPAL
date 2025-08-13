@@ -12,7 +12,7 @@ class PersonaNaturalController
 
     public function __construct()
     {
-        $this->personaJuridicaRepository = new PersonaJuridicaRepository();
+        $this->personaNaturalRepository = new PersonaNaturalRepository();
     }
 
     public function handle(): void

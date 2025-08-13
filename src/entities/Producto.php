@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\entities;
 
-class Producto
+abstract class Producto
 {
     private ?int $id;
     private ?string $nombre;
@@ -16,24 +16,14 @@ class Producto
 
     public function __construct(
         ?int $id,
-        ?string $nombre,
-        ?string $descripcion, 
-        float $precioUnitario, 
+        string $nombre,
+        ?string $descripcion,
+        float $precioUnitario,
         int $stock,
         int $idCategoria,
         string $tipoProducto
     ) {
-        if ($precioUnitario < 0) {
-            throw new InvalidArgumentException("El precio unitario no puede ser negativo.");
-        }
-        if ($stock < 0) {
-            throw new InvalidArgumentException("El stock no puede ser negativo.");
-        }
-        if (!in_array($tipoProducto, ['FISICO', 'DIGITAL'], true)) {
-            throw new InvalidArgumentException("El tipo de producto debe ser 'FISICO' o 'DIGITAL'.");
-        }
-
-        $this->id = null;
+        $this->id = $id;
         $this->nombre = $nombre;
         $this->descripcion = $descripcion;
         $this->precioUnitario = $precioUnitario;

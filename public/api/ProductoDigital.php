@@ -2,6 +2,6 @@
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-use App\controllers\ProductoDigitalController;
+use App\Controllers\ProductoDigitalController;
 
 (new ProductoDigitalController())->handle();

@@ -2,6 +2,6 @@
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-use App\controllers\PersonaNaturalController;
+use App\Controllers\PersonaNaturalController;
 
 (new PersonaNaturalController())->handle();

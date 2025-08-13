@@ -73,16 +73,12 @@ class ProductoFisicoRepository implements RepositoryInterface
         ]);
     }
 
-    public function delete(object $entity): bool
+    public function delete(int $id): bool
     {
-        if (!$entity instanceof ProductoFisico) {
-            throw new \InvalidArgumentException('Entity must be an instance of ProductoFisico');
-        }
-
         $sql = "DELETE FROM producto_fisico WHERE id=:id";
         $stmt = $this->connection->prepare($sql);
 
-        return $stmt->execute([':id' => $entity->getId()]);
+        return $stmt->execute([':id' => $id]);
     }
 
     public function findAll(): array
@@ -93,20 +89,19 @@ class ProductoFisicoRepository implements RepositoryInterface
         return array_map(fn($row) => $this->hydrate($row), $rows);
     }
 
-    public function hydrate(array $data): ProductoFisico
+    private function hydrate(array $row): ProductoFisico
     {
         return new ProductoFisico(
-            id: (int)$data['id'],
-            nombre: (string)$data['nombre'],
-            descripcion: (string)$data['descripcion'],
-            precioUnitario: (float)$data['precioUnitario'],
-            stock: (int)$data['stock'],
-            idCategoria: (int)$data['idCategoria'],
-            peso: (float)$data['peso'],
-            alto: (float)$data['alto'],
-            ancho: (float)$data['ancho'],
-            profundidad: (float)$data['profundidad']
+            (int)($row['id'] ?? 0),           // Argumento #1: id
+            (string)($row['nombre'] ?? ''),   // Argumento #2: nombre
+            (string)($row['descripcion'] ?? ''),
+            (float)($row['precio_unitario'] ?? 0.0),
+            (int)($row['stock'] ?? 0),
+            (int)($row['id_categoria'] ?? 0),
+            (float)($row['peso'] ?? 0.0),
+            (float)($row['alto'] ?? 0.0),
+            (float)($row['ancho'] ?? 0.0),
+            (float)($row['profundidad'] ?? 0.0)
         );
     }
-
 }

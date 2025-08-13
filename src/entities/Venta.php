@@ -7,7 +7,7 @@ namespace App\entities;
 class Venta
 {
     private ?int $id;
-    private DateTimeImmutable $fecha;
+    private \DateTime $fecha;
     private int $idCliente;
     private float $total;
     private string $estado;
@@ -16,7 +16,7 @@ class Venta
         int $idCliente,
         float $total,
         string $estado,
-        ?DateTimeImmutable $fecha = null
+        ?\DateTime $fecha = null
     ) {
         if ($total < 0) {
             throw new InvalidArgumentException("El total de la venta no puede ser negativo.");
@@ -26,7 +26,7 @@ class Venta
         }
 
         $this->id = null;
-        $this->fecha = $fecha ?? new DateTimeImmutable();
+        $this->fecha = $fecha ?? new \DateTime();
         $this->idCliente = $idCliente;
         $this->total = $total;
         $this->estado = $estado;
@@ -35,7 +35,7 @@ class Venta
   
 
     public function getId(): ?int { return $this->id; }
-    public function getFecha(): DateTimeImmutable { return $this->fecha; }
+    public function getFecha(): \DateTime { return $this->fecha; }
     public function getIdCliente(): int { return $this->idCliente; }
     public function getTotal(): float { return $this->total; }
     public function getEstado(): string { return $this->estado; }
@@ -45,7 +45,7 @@ class Venta
     {
         $this->id = $id;
     }
-    public function setFecha(DateTimeImmutable $fecha): void { $this->fecha = $fecha; }
+    public function setFecha(\DateTime $fecha): void { $this->fecha = $fecha; }
     public function setIdCliente(int $idCliente): void { $this->idCliente = $idCliente; }
     public function setTotal(float $total): void
     {

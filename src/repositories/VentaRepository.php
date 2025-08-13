@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\repositories;
 
-use App\interfaces\RepositoryInterface;
-use App\config\Database;
-use App\entities\Venta;
+use App\Interfaces\RepositoryInterface;
+use App\Config\Database;
+use App\Entities\Venta;
 use PDO;
 
 class VentaRepository implements RepositoryInterface
@@ -59,7 +59,7 @@ class VentaRepository implements RepositoryInterface
         $ventas = [];
 
         while ($data = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $ventas[] = new Venta((int)$data['idCliente'], (float)$data['total'], $data['estado'], new \DateTime($data['fecha']), (int)$data['id']);
+            $ventas[] = new Venta((int)$data['id_cliente'], (float)$data['total'], $data['estado'], new \DateTime($data['fecha']), (int)$data['id']);
         }
 
         return $ventas;
@@ -68,7 +68,7 @@ class VentaRepository implements RepositoryInterface
     public function hydrate(array $data): Venta
     {
         return new Venta(
-            (int)$data['idCliente'],
+            (int)$data['id_cliente'],
             (float)$data['total'],
             $data['estado'],
             new \DateTime($data['fecha']),
