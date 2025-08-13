@@ -2,6 +2,6 @@
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-use App\controllers\DetalleVentaController;
+use App\Controllers\DetalleVentaController;
 
 (new DetalleVentaController())->handle();

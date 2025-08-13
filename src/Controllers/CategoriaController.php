@@ -91,7 +91,7 @@ class CategoriaController
     public function categoriaToArray(Categoria $categoria): array
     {
         return [
-            'id' => $author->getId(),
+            'id' => $categoria->getId(),
             'nombre' => $categoria->getNombre(),
             'descripcion' => $categoria->getDescripcion(),
             'estado' => $categoria->getEstado(),

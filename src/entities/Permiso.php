@@ -9,9 +9,9 @@ class Permiso
     private ?int $id;
     private string $codigo;
 
-    public function __construct(string $codigo)
+    public function __construct(int $id, string $codigo)
     {
-        $this->id = null;
+        $this->id = $id;
         $this->codigo = $codigo;
     }
 

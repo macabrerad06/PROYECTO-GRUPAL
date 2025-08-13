@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace App\repositories;
+namespace App\Repositories;
 
-use App\interfaces\RepositoryInterface;
-use App\config\Database;
-use App\entities\DetalleVenta;
+use App\Interfaces\RepositoryInterface;
+use App\Config\Database;
+use App\Entities\DetalleVenta;
 use PDO;
 
 
@@ -70,12 +70,12 @@ class DetalleVentaRepository implements RepositoryInterface
         ]);
     }
 
-    public function delete(int $idVenta, int $lineNumber): bool
+    public function delete(int $id): bool
     {
-        $sql = "DELETE FROM detalle_venta WHERE idVenta=:idVenta AND lineNumber=:lineNumber";
+        $sql = "DELETE FROM detalle_venta WHERE id_venta=:id";
         $stmt = $this->db->prepare($sql);
 
-        return $stmt->execute([':idVenta' => $idVenta, ':lineNumber' => $lineNumber]);
+        return $stmt->execute([':id' => $id]);
     }
 
     public function findAll(): array

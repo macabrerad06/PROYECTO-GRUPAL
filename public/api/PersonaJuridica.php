@@ -2,6 +2,6 @@
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-use App\controllers\PersonaJuridicaController;
+use App\Controllers\PersonaJuridicaController;
 
 (new PersonaJuridicaController())->handle();

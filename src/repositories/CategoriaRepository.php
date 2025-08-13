@@ -85,11 +85,11 @@ class CategoriaRepository implements RepositoryInterface
 
     private function hydrate(array $row): Categoria{
         $categoria = new Categoria(
-            (int)$row['id'],
+            $row['id'],
             $row['nombre'],
             $row['descripcion'],
-            $row['estado'],
-            (int)$row['id_padre']
+            (bool)$row['estado'],
+            $row['id_padre']
         );
         return $categoria;
     }

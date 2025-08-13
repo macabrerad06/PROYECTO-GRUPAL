@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\entities;
+namespace App\Entities;
 
-class Persona_Juridica extends Cliente
+class PersonaJuridica extends Cliente
 {
     private string $razonSocial;
     private string $ruc;

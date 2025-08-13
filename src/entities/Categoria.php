@@ -12,6 +12,7 @@ class Categoria
     private ?int $idPadre; 
 
     public function __construct(
+        ?int $id = null, // Acepta ?int
         string $nombre,
         ?string $descripcion = null,
         bool $estado = true,
