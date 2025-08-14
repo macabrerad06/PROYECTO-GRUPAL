@@ -125,7 +125,7 @@ const createCategoriaPanel = () => {
         tbar: [
             // Botones para las acciones CRUD (Crear, Leer, Actualizar, Borrar).
             {
-                text: 'Add',
+                text: 'Agregar',
                 handler: () => {
                     // Aquí iría la lógica para abrir una ventana de formulario
                     // para añadir un nuevo registro.
@@ -133,7 +133,7 @@ const createCategoriaPanel = () => {
                 }
             },
             {
-                text: 'Update',
+                text: 'Actualizar',
                 handler: function() {
                     // Aquí iría la lógica para obtener el registro seleccionado
                     // y abrir una ventana de formulario para editarlo.
@@ -147,7 +147,7 @@ const createCategoriaPanel = () => {
                 }
             },
             {
-                text: 'Delete',
+                text: 'Eliminar',
                 handler: function() {
                     // Aquí iría la lógica para eliminar el registro seleccionado.
                     const grid = this.up('grid');
