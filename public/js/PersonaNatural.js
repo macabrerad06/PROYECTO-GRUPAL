@@ -1,9 +1,9 @@
 Ext.define('App.model.PersonaNatural',{
     extend: 'Ext.data.Model',
     fields: [
-        {name: 'id_cliente', type: 'int'},
-        {name: 'nombres', type: 'string'},
-        {name: 'apellidos', type: 'string'},
+        {name: 'id', type: 'int'},
+        {name: 'nombre', type: 'string'},
+        {name: 'apellido', type: 'string'},
         {name: 'cedula', type: 'string'}
     ]
 })
@@ -37,9 +37,9 @@ const createPersonaNaturalPanel = () => {
         itemId: 'PersonaNaturalGrid',
         layout: 'fit',
         columns: [
-            { text: 'ID', width: 80, dataIndex: 'id_cliente' },
-            { text: 'Nombres', width: 120, dataIndex: 'nombres' },
-            { text: 'Apellidos', width: 120, dataIndex: 'apellidos' },
+            { text: 'ID', width: 80, dataIndex: 'id' },
+            { text: 'Nombre', width: 120, dataIndex: 'nombre' },
+            { text: 'Apellido', width: 120, dataIndex: 'apellido' },
             { text: 'Cédula', width: 120, dataIndex: 'cedula' }
         ],
         tbar: [

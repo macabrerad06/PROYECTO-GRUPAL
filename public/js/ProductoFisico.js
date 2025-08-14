@@ -2,6 +2,7 @@ Ext.define('App.model.ProductoFisico',{
     extend: 'Ext.data.Model',
     fields: [
         {name: 'id_producto', type: 'int'},
+        {name: 'nombre', type: 'string'},
         {name: 'peso', type: 'float'},
         {name: 'alto', type: 'float'},
         {name: 'ancho', type: 'float'},
@@ -39,6 +40,7 @@ const createProductoFisicoPanel = () => {
         layout: 'fit',
         columns: [
             { text: 'ID', width: 80, dataIndex: 'id_producto' },
+            { text: 'Nombre', width: 200, dataIndex: 'nombre' },
             { text: 'Peso', width: 120, dataIndex: 'peso' },
             { text: 'Alto', width: 120, dataIndex: 'alto' },
             { text: 'Ancho', width: 120, dataIndex: 'ancho' },

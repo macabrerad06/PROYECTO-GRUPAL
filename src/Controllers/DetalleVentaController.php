@@ -21,8 +21,8 @@ class DetalleVentaController
         $method = $_SERVER['REQUEST_METHOD'];
 
         if ($method === 'GET') {
-            if (isset($_GET['id'])) {
-                $detalleVenta = $this->detalleVentaRepository->findById((int)$_GET['id']);
+            if (isset($_GET['idVenta'])) {
+                $detalleVenta = $this->detalleVentaRepository->findById((int)$_GET['idVenta']);
                 echo json_encode($detalleVenta ? $this->detalleVentaToArray($detalleVenta) : null);
                 return;
             } else {
@@ -30,7 +30,7 @@ class DetalleVentaController
                     [$this, 'detalleVentaToArray'],
                     $this->detalleVentaRepository->findAll()
                 );
-                echo json_encode($list);
+                echo json_encode(['data' => $list]); // Se envuelve en una clave 'data' para el proxy
             }
             return;
         }
@@ -40,11 +40,11 @@ class DetalleVentaController
         if ($method === 'POST') {
             try {
                 $detalleVenta = new DetalleVenta(
-                    null,
-                    $payload['lineNumber'],
-                    $payload['idProducto'],
+                    $payload['id_venta'], // Se cambia a id_venta para que coincida con el modelo
+                    $payload['line_number'], // Se cambia a line_number
+                    $payload['id_producto'],
                     $payload['cantidad'],
-                    $payload['precioUnitario'],
+                    $payload['precio_unitario'],
                     $payload['subtotal']
                 );
                 echo json_encode(['success' => $this->detalleVentaRepository->create($detalleVenta)]);
@@ -56,8 +56,9 @@ class DetalleVentaController
         }
 
         if ($method === 'PUT') {
-            $id = (int)($payload['id'] ?? 0);
-            $existing = $this->detalleVentaRepository->findById($id);
+            $idVenta = (int)($payload['id_venta'] ?? 0);
+            $lineNumber = (int)($payload['line_number'] ?? 0);
+            $existing = $this->detalleVentaRepository->findById($idVenta, $lineNumber);
 
             if (!$existing) {
                 http_response_code(404);
@@ -65,10 +66,9 @@ class DetalleVentaController
                 return;
             }
 
-            if (isset($payload['lineNumber'])) $existing->setLineNumber($payload['lineNumber']);
-            if (isset($payload['idProducto'])) $existing->setIdProducto($payload['idProducto']);
+            if (isset($payload['id_producto'])) $existing->setIdProducto($payload['id_producto']);
             if (isset($payload['cantidad'])) $existing->setCantidad($payload['cantidad']);
-            if (isset($payload['precioUnitario'])) $existing->setPrecioUnitario($payload['precioUnitario']);
+            if (isset($payload['precio_unitario'])) $existing->setPrecioUnitario($payload['precio_unitario']);
             if (isset($payload['subtotal'])) $existing->setSubtotal($payload['subtotal']);
 
             echo json_encode(['success' => $this->detalleVentaRepository->update($existing)]);
@@ -76,13 +76,14 @@ class DetalleVentaController
         }
 
         if ($method === 'DELETE') {
-            $id = (int)($payload['idVenta'] ?? 0);
-            if ($id === 0) {
+            $idVenta = (int)($payload['id_venta'] ?? 0);
+            $lineNumber = (int)($payload['line_number'] ?? 0);
+            if ($idVenta === 0 || $lineNumber === 0) {
                 http_response_code(400);
-                echo json_encode(['error' => 'ID not provided']);
+                echo json_encode(['error' => 'ID Venta or Line Number not provided']);
                 return;
             }
-            echo json_encode(['success' => $this->detalleVentaRepository->delete($id)]);
+            echo json_encode(['success' => $this->detalleVentaRepository->delete($idVenta, $lineNumber)]);
             return;
         }
 
@@ -93,11 +94,11 @@ class DetalleVentaController
     public function detalleVentaToArray(DetalleVenta $detalleVenta): array
     {
         return [
-            'idVenta' => $detalleVenta->getIdVenta(),
-            'lineNumber' => $detalleVenta->getLineNumber(),
-            'idProducto' => $detalleVenta->getIdProducto(),
+            'id_venta' => $detalleVenta->getIdVenta(),
+            'line_number' => $detalleVenta->getLineNumber(),
+            'id_producto' => $detalleVenta->getIdProducto(),
             'cantidad' => $detalleVenta->getCantidad(),
-            'precioUnitario' => $detalleVenta->getPrecioUnitario(),
+            'precio_unitario' => $detalleVenta->getPrecioUnitario(),
             'subtotal' => $detalleVenta->getSubtotal()
         ];
     }

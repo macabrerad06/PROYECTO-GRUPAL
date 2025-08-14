@@ -21,8 +21,8 @@ class ProductoFisicoController
         $method = $_SERVER['REQUEST_METHOD'];
 
         if ($method === 'GET') {
-            if (isset($_GET['id'])) {
-                $productoFisico = $this->productoFisicoRepository->findById((int)$_GET['id']);
+            if (isset($_GET['id_producto'])) {
+                $productoFisico = $this->productoFisicoRepository->findById((int)$_GET['id_producto']);
                 echo json_encode($productoFisico ? $this->productoFisicoToArray($productoFisico) : null);
                 return;
             } else {
@@ -41,6 +41,7 @@ class ProductoFisicoController
             try {
                 $productoFisico = new ProductoFisico(
                     null,
+                    $payload['nombre'],
                     $payload['peso'],
                     $payload['alto'],
                     $payload['ancho'],
@@ -55,7 +56,7 @@ class ProductoFisicoController
         }
              
         if ($method === 'PUT') {
-            $id = (int)($payload['id'] ?? 0);
+            $id = (int)($payload['id_producto'] ?? 0);
             $existing = $this->productoFisicoRepository->findById($id);
 
             if (!$existing) {
@@ -64,6 +65,7 @@ class ProductoFisicoController
                 return;
             }
 
+            if (isset($payload['nombre'])) $existing->setNombre($payload['nombre']);
             if (isset($payload['peso'])) $existing->setPeso($payload['peso']);
             if (isset($payload['alto'])) $existing->setAlto($payload['alto']);
             if (isset($payload['ancho'])) $existing->setAncho($payload['ancho']);
@@ -74,7 +76,7 @@ class ProductoFisicoController
         }
 
         if ($method === 'DELETE') {
-            $id = (int)($payload['id'] ?? 0);
+            $id = (int)($payload['id_producto'] ?? 0);
             if ($id === 0) {
                 http_response_code(400);
                 echo json_encode(['error' => 'ID not provided']);
@@ -91,7 +93,8 @@ class ProductoFisicoController
     public function productoFisicoToArray(ProductoFisico $productoFisico): array
     {
         return [
-            'id' => $productoFisico->getId(),
+            'id_producto' => $productoFisico->getId(),
+            'nombre' => $productoFisico->getNombre(),
             'peso' => $productoFisico->getPeso(),
             'alto' => $productoFisico->getAlto(),
             'ancho' => $productoFisico->getAncho(),

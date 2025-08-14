@@ -23,11 +23,12 @@ class ProductoFisicoRepository implements RepositoryInterface
             throw new \InvalidArgumentException('Entity must be an instance of ProductoFisico');
         }
 
-        $sql = "INSERT INTO producto_fisico (nombre, descripcion, precioUnitario, stock, idCategoria, peso, alto, ancho, profundidad) 
-                VALUES (:nombre, :descripcion, :precioUnitario, :stock, :idCategoria, :peso, :alto, :ancho, :profundidad)";
+        $sql = "INSERT INTO producto_fisico (id_producto,nombre, descripcion, precioUnitario, stock, idCategoria, peso, alto, ancho, profundidad) 
+                VALUES (:id_producto, :nombre, :descripcion, :precioUnitario, :stock, :idCategoria, :peso, :alto, :ancho, :profundidad)";
         $stmt = $this->connection->prepare($sql);
 
         return $stmt->execute([
+            ':id_producto' => $entity->getId(),
             ':nombre' => $entity->getNombre(),
             ':descripcion' => $entity->getDescripcion(),
             ':precioUnitario' => $entity->getPrecioUnitario(),
@@ -42,9 +43,9 @@ class ProductoFisicoRepository implements RepositoryInterface
 
     public function findById(int $id): ?object
     {
-        $sql = "SELECT * FROM producto_fisico WHERE id=:id";
+        $sql = "SELECT * FROM producto_fisico WHERE id_producto=:id_producto";
         $stmt = $this->connection->prepare($sql);
-        $stmt->execute([':id' => $id]);
+        $stmt->execute([':id_producto' => $id]);
         $row = $stmt->fetch();
         return $row ? $this->hydrate($row) : null;
     }
@@ -60,6 +61,7 @@ class ProductoFisicoRepository implements RepositoryInterface
         $stmt = $this->connection->prepare($sql);
 
         return $stmt->execute([
+            ':id_producto' => $entity->getId(),
             ':nombre' => $entity->getNombre(),
             ':descripcion' => $entity->getDescripcion(),
             ':precioUnitario' => $entity->getPrecioUnitario(),
@@ -69,16 +71,15 @@ class ProductoFisicoRepository implements RepositoryInterface
             ':alto' => $entity->getAlto(),
             ':ancho' => $entity->getAncho(),
             ':profundidad' => $entity->getProfundidad(),
-            ':id' => $entity->getId()
         ]);
     }
 
     public function delete(int $id): bool
     {
-        $sql = "DELETE FROM producto_fisico WHERE id=:id";
+        $sql = "DELETE FROM producto_fisico WHERE id_producto=:id_producto";
         $stmt = $this->connection->prepare($sql);
 
-        return $stmt->execute([':id' => $id]);
+        return $stmt->execute([':id_producto' => $id]);
     }
 
     public function findAll(): array
@@ -92,7 +93,7 @@ class ProductoFisicoRepository implements RepositoryInterface
     private function hydrate(array $row): ProductoFisico
     {
         return new ProductoFisico(
-            (int)($row['id'] ?? 0),           // Argumento #1: id
+            (int)($row['id_producto'] ?? 0),           // Argumento #1: id
             (string)($row['nombre'] ?? ''),   // Argumento #2: nombre
             (string)($row['descripcion'] ?? ''),
             (float)($row['precio_unitario'] ?? 0.0),

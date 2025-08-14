@@ -3,7 +3,7 @@ Ext.define('App.model.Usuario',{
     fields: [
         {name: 'id', type: 'int'},
         {name: 'username', type: 'string'},
-        {name: 'password_hash', type: 'string'},
+        {name: 'passwordHash', type: 'string'},
         {name: 'estado', type: 'string'}
     ]
 })
@@ -38,7 +38,7 @@ const createUsuarioPanel = () => {
         columns: [
             { text: 'ID', width: 80, dataIndex: 'id' },
             { text: 'Username', width: 120, dataIndex: 'username' },
-            { text: 'Password', width: 120, dataIndex: 'password_hash' },
+            { text: 'Password', width: 120, dataIndex: 'passwordHash' },
             { text: 'Estado', width: 120, dataIndex: 'estado' }
         ],
         tbar: [

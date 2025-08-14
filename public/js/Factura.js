@@ -1,11 +1,11 @@
 Ext.define('App.model.Factura',{
     extend: 'Ext.data.Model',
     fields: [
-        {name: 'id_factura', type: 'int'},
-        {name: 'id_venta', type: 'int'},
+        {name: 'id', type: 'int'},
+        {name: 'idVenta', type: 'int'},
         {name: 'numero', type: 'string'},
-        {name: 'clave_acceso', type: 'string'},
-        {name: 'fecha_emision', type: 'date', dateFormat: 'Y-m-d'},
+        {name: 'claveAcceso', type: 'string'},
+        {name: 'fechaEmision', type: 'date', dateFormat: 'Y-m-d'},
         {name: 'estado', type: 'string'}
     ]
 })
@@ -39,11 +39,11 @@ const createFacturaPanel = () => {
         itemId: 'FacturaGrid',
         layout: 'fit',
         columns: [
-            { text: 'ID', width: 80, dataIndex: 'id_factura' },
-            { text: 'ID Venta', width: 80, dataIndex: 'id_venta' },
+            { text: 'ID', width: 80, dataIndex: 'id' },
+            { text: 'ID Venta', width: 80, dataIndex: 'idVenta' },
             { text: 'Número', width: 120, dataIndex: 'numero' },
-            { text: 'Clave de Acceso', width: 150, dataIndex: 'clave_acceso' },
-            { text: 'Fecha de Emisión', width: 120, dataIndex: 'fecha_emision' },
+            { text: 'Clave de Acceso', width: 150, dataIndex: 'claveAcceso' },
+            { text: 'Fecha de Emisión', width: 120, dataIndex: 'fechaEmision' },
             { text: 'Estado', width: 100, dataIndex: 'estado' }
         ],
         tbar: [

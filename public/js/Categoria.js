@@ -9,7 +9,7 @@ Ext.define('App.model.Categoria', {
     extend: 'Ext.data.Model',
     fields: [
         // 'id' es un campo común para la clave primaria. El tipo 'int' es para números enteros.
-        {name: 'id_categoria', type: 'int'},
+        {name: 'id', type: 'int'},
 
         // Aquí van los campos específicos de tu entidad.
         // Por ejemplo, para un proyecto, podrías tener 'nombre' y 'descripcion'.
@@ -17,7 +17,7 @@ Ext.define('App.model.Categoria', {
         {name: 'nombre', type: 'string'},
         {name: 'descripcion', type: 'string'},
         {name: 'estado', type: 'bool'},
-        {name: 'id_padre', type: 'int'},
+        {name: 'idPadre', type: 'int'},
 
         // Si tienes una fecha, es importante definir el tipo 'date' y el formato
         // en el que la recibirás del servidor ('Y-m-d' es para 'YYYY-MM-DD').
@@ -106,11 +106,11 @@ const createCategoriaPanel = () => {
             // 'text' es el título de la columna.
             // 'width' o 'flex' definen el tamaño. 'flex: 1' lo hace flexible.
             // 'dataIndex' es el nombre del campo en tu modelo del que se tomará el dato.
-            { text: 'ID', width: 40, dataIndex: 'id_categoria' },
+            { text: 'ID', width: 40, dataIndex: 'id' },
             { text: 'Nombre', flex: 1, dataIndex: 'nombre' },
             { text: 'Descripción', flex: 1, dataIndex: 'descripcion' },
             { text: 'Estado', width: 80, dataIndex: 'estado', xtype: 'booleancolumn', trueText: 'Activo', falseText: 'Inactivo' },
-            { text: 'ID Padre', width: 80, dataIndex: 'id_padre' },
+            { text: 'ID Padre', width: 80, dataIndex: 'idPadre' },
             // Para las fechas, usa 'xtype: 'datecolumn'' para que se muestren correctamente.
             /*{
                 text: 'Fecha Inicio',

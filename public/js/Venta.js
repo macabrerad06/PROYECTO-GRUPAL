@@ -1,9 +1,9 @@
 Ext.define('App.model.Venta',{
     extend: 'Ext.data.Model',
     fields: [
-        {name: 'id_venta', type: 'int'},
-        {name: 'fecha', type: 'date', dateFormat: 'Y-m-d'},
-        {name: 'id_cliente', type: 'int'},
+        {name: 'id', type: 'int'},
+        {name: 'fecha', type: 'date'},
+        {name: 'idCliente', type: 'int'},
         {name: 'total', type: 'float'},
         {name: 'estado', type: 'string'}
     ]
@@ -37,9 +37,9 @@ const createVentaPanel = () => {
         itemId: 'VentaGrid',
         layout: 'fit',
         columns: [
-            { text: 'ID', width: 80, dataIndex: 'id_venta' },
-            { text: 'Fecha', width: 120, dataIndex: 'fecha', xtype: 'datecolumn', format: 'Y-m-d' },
-            { text: 'ID Cliente', width: 100, dataIndex: 'id_cliente' },
+            { text: 'ID', width: 80, dataIndex: 'id' },
+            { text: 'Fecha', width: 120, dataIndex: 'fecha' },
+            { text: 'ID Cliente', width: 100, dataIndex: 'idCliente' },
             { text: 'Total', width: 80, dataIndex: 'total', xtype: 'numbercolumn', format: '0.00' },
             { text: 'Estado', width: 120, dataIndex: 'estado' }
         ],

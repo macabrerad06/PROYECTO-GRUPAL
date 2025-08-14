@@ -5,7 +5,7 @@ Ext.define('App.model.DetalleVenta',{
         {name: 'line_number', type: 'int'},
         {name: 'id_producto', type: 'int'},
         {name: 'cantidad', type: 'int'},
-        {name: 'precio_Unitario', type: 'float'},
+        {name: 'precio_unitario', type: 'float'},
         {name: 'subtotal', type: 'float'}
     ]
 })
@@ -22,7 +22,7 @@ Ext.create('Ext.data.Store', {
         },
         writer:{
             type: 'json',
-            rootProperty: 'data',
+            rootProperty: '',
             writeAllFields: true
         },
         appendId: false
@@ -43,7 +43,7 @@ const createDetalleVentaPanel = () => {
             { text: 'Número de Línea', width: 120, dataIndex: 'line_number' },
             { text: 'ID Producto', width: 100, dataIndex: 'id_producto' },
             { text: 'Cantidad', width: 80, dataIndex: 'cantidad' },
-            { text: 'Precio Unitario', width: 120, dataIndex: 'precio_Unitario' },
+            { text: 'Precio Unitario', width: 120, dataIndex: 'precio_unitario' },
             { text: 'Subtotal', width: 120, dataIndex: 'subtotal' }
         ],
         tbar: [

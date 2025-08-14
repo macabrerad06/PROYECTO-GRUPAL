@@ -1,9 +1,9 @@
 Ext.define('App.model.ProductoDigital',{
     extend: 'Ext.data.Model',
     fields: [
-        {name: 'id_producto', type: 'int'},
-        {name: 'url_descarga', type: 'string'},
-        {name: 'licencia', type: 'string'}
+        {name: 'id', type: 'int'},
+        {name: 'urlDescarga', type: 'string'},
+        {name: 'Licencia', type: 'string'}
     ]
 })
 
@@ -36,9 +36,9 @@ const createProductoDigitalPanel = () => {
         itemId: 'ProductoDigitalGrid',
         layout: 'fit',
         columns: [
-            { text: 'ID', width: 80, dataIndex: 'id_producto' },
-            { text: 'URL de Descarga', width: 120, dataIndex: 'url_descarga' },
-            { text: 'Licencia', width: 120, dataIndex: 'licencia' }
+            { text: 'ID', width: 80, dataIndex: 'id' },
+            { text: 'URL de Descarga', width: 120, dataIndex: 'urlDescarga' },
+            { text: 'Licencia', width: 120, dataIndex: 'Licencia' }
         ],
         tbar: [
             {

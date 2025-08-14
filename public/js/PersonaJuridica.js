@@ -1,7 +1,7 @@
 Ext.define('App.model.PersonaJuridica',{
     extend: 'Ext.data.Model',
     fields: [
-        {name: 'id_cliente', type: 'int'},
+        {name: 'id', type: 'int'},
         {name: 'razon_social', type: 'string'},
         {name: 'ruc', type: 'string'},
         {name: 'representante_legal', type: 'string'}
@@ -38,10 +38,10 @@ const createPersonaJuridicaPanel = () => {
         itemId: 'PersonaJuridicaGrid',
         layout: 'fit',
         columns: [
-            { text: 'ID', width: 80, dataIndex: 'id_cliente' },
+            { text: 'ID', width: 80, dataIndex: 'id' },
             { text: 'Razón Social', width: 120, dataIndex: 'razon_social' },
             { text: 'RUC', width: 120, dataIndex: 'ruc' },
-            { text: 'Representante Legal', width: 120, dataIndex: 'representante_legal' }
+            { text: 'Representante Legal', width: 120, dataIndex: 'representante_legal|' }
         ],
         tbar: [
             {

@@ -1,8 +1,8 @@
 Ext.define('App.model.RolPermiso',{
     extend: 'Ext.data.Model',
     fields: [
-        {name: 'id_rol', type: 'int'},
-        {name: 'id_permiso', type: 'int'}
+        {name: 'idRol', type: 'int'},
+        {name: 'idPermiso', type: 'int'}
     ]
 })
 
@@ -35,8 +35,8 @@ const createRolPermisoPanel = () => {
         itemId: 'RolPermisoGrid',
         layout: 'fit',
         columns: [
-            { text: 'ID Rol', width: 80, dataIndex: 'id_rol' },
-            { text: 'ID Permiso', width: 120, dataIndex: 'id_permiso' }
+            { text: 'ID Rol', width: 80, dataIndex: 'idRol' },
+            { text: 'ID Permiso', width: 120, dataIndex: 'idPermiso' }
         ],
         tbar: [
             {
