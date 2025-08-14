@@ -129,7 +129,9 @@ const createCategoriaPanel = () => {
                 handler: () => {
                     // Aquí iría la lógica para abrir una ventana de formulario
                     // para añadir un nuevo registro.
-                    console.log('Botón Add clicado');
+                    // Por ejemplo, podrías abrir un formulario modal.
+                    Ext.Msg.alert('Agregar', 'Aquí iría la lógica para agregar una nueva categoría.');
+                    console.log('Botón Agregar clicado');
                 }
             },
             {
